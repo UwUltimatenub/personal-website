@@ -38,7 +38,7 @@ export function initCadViewer() {
   const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 1000);
   camera.position.set(7, 5, 8);
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.35));
+  renderer.setPixelRatio(1);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
