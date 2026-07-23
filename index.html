@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Eric Zeng — engineering student, robotics designer, programmer, and mentor." />
+    <title>Eric Zeng — Robotics & Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Eric Zeng, home"><span>EZ</span><span class="brand-name">Eric Zeng</span></a>
+      <button class="menu-button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+      <nav aria-label="Primary navigation">
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+      </nav>
+      <a class="header-contact" href="mailto:ericzeng210@gmail.com">Let's talk <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="status-dot"></span> Based in Ontario, Canada</p>
+          <h1>I design, build &amp; program <em>robots.</em></h1>
+          <p class="hero-intro">Engineering student and robotics mentor turning ambitious ideas into reliable, competition-ready machines.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#experience">Explore my work <span>↓</span></a>
+            <a class="text-link" href="Profile.pdf" target="_blank">View résumé <span>↗</span></a>
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Abstract technical illustration of a robot mechanism">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="visual-label label-a"><span>01</span> DESIGN</div>
+          <div class="visual-label label-b"><span>02</span> BUILD</div>
+          <div class="visual-label label-c"><span>03</span> CODE</div>
+          <div class="robot-mark">
+            <div class="robot-core"><span></span><span></span></div>
+            <div class="arm arm-left"></div><div class="arm arm-right"></div>
+          </div>
+          <p class="coordinate">43.7764° N<br />79.2318° W</p>
+        </div>
+        <div class="hero-index mono">01 / 04</div>
+      </section>
+
+      <section class="marquee" aria-label="Areas of expertise"><div class="marquee-track"><span>ROBOTICS</span><i>✦</i><span>MECHANICAL DESIGN</span><i>✦</i><span>AUTONOMOUS SYSTEMS</span><i>✦</i><span>MENTORSHIP</span><i>✦</i><span>ROBOTICS</span><i>✦</i><span>MECHANICAL DESIGN</span><i>✦</i></div></section>
+
+      <section class="about section-shell" id="about">
+        <div class="section-label mono reveal"><span>02</span> ABOUT</div>
+        <div class="about-content reveal">
+          <p class="statement">I’m an engineering student at <strong>Western University</strong> who enjoys the entire process—from the first sketch to the final autonomous routine.</p>
+          <div class="about-grid">
+            <p>I founded and captained a competitive robotics team, and now mentor the next generation of builders. My work blends CAD, hands-on fabrication, sensor integration, and command-based programming.</p>
+            <p>I care about robust mechanisms, clean systems, and teams that work well together. The best solution isn’t just clever—it’s manufacturable, maintainable, and ready when the match starts.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="experience section-shell" id="experience">
+        <div class="section-heading reveal"><div class="section-label mono"><span>03</span> EXPERIENCE</div><h2>Where I’ve<br />made an impact.</h2></div>
+        <div class="timeline">
+          <article class="role reveal"><div class="role-date mono">SEP 2025 — NOW</div><div><p class="role-type">Leadership · Robotics</p><h3>Robotics Coordinator</h3><p class="company">CSAA Future</p><p>Guide students from game analysis and prototyping through CAD, fabrication, wiring, programming, and competition readiness.</p></div><span class="role-number mono">01</span></article>
+          <article class="role reveal"><div class="role-date mono">OCT 2023 — JUN 2025</div><div><p class="role-type">Design · Programming</p><h3>Founding Team Captain</h3><p class="company">Team 9659</p><p>Led cross-functional build teams, designed the final robot in Onshape, and developed multi-step autonomous routines using vision and sensor data.</p></div><span class="role-number mono">02</span></article>
+          <article class="role reveal"><div class="role-date mono">JUL — AUG 2024</div><div><p class="role-type">Engineering · CAD</p><h3>Student Intern</h3><p class="company">Cyberworks Robotics Inc.</p><p>Designed CAD sensor and camera mounts for an autonomous airport wheelchair.</p></div><span class="role-number mono">03</span></article>
+          <article class="role reveal"><div class="role-date mono">JUN 2025 — NOW</div><div><p class="role-type">Hospitality</p><h3>Server</h3><p class="company">D-Lite's</p><p>Deliver thoughtful table service and manage beverages and payments in a fast-paced environment.</p></div><span class="role-number mono">04</span></article>
+        </div>
+      </section>
+
+      <section class="skills section-shell" id="skills">
+        <div class="section-label mono reveal"><span>04</span> TOOLKIT</div>
+        <div class="skills-header reveal"><h2>Built to make<br />ideas move.</h2><p>A practical toolkit spanning mechanical systems, software, and team leadership.</p></div>
+        <div class="skill-grid">
+          <article class="skill-card reveal"><span class="mono">A / 01</span><h3>Programming</h3><ul><li>Java</li><li>C++</li><li>Command-based architecture</li><li>Autonomous routines</li></ul></article>
+          <article class="skill-card reveal"><span class="mono">B / 02</span><h3>Design &amp; Build</h3><ul><li>Onshape &amp; SolidWorks</li><li>Design for Manufacturing</li><li>3D printing &amp; CNC</li><li>Tolerance analysis</li></ul></article>
+          <article class="skill-card reveal"><span class="mono">C / 03</span><h3>Robotics</h3><ul><li>Computer vision</li><li>Sensor integration</li><li>Electrical systems</li><li>Limelight &amp; PhotonVision</li></ul></article>
+        </div>
+      </section>
+
+      <section class="contact section-shell">
+        <p class="eyebrow reveal">Have a project, team, or idea?</p>
+        <h2 class="reveal">Let’s build something<br /><em>that moves.</em></h2>
+        <a class="contact-email reveal" href="mailto:ericzeng210@gmail.com">ericzeng210@gmail.com <span>↗</span></a>
+      </section>
+    </main>
+
+    <footer class="section-shell"><p>© <span id="year"></span> Eric Zeng</p><div><a href="https://www.linkedin.com/in/eric-zeng07/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="#top">Back to top ↑</a></div></footer>
+  </body>
+</html>
