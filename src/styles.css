@@ -24,9 +24,9 @@
 .cad-toolbar{height:59px;border-bottom:1px solid var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:20px}
 .cad-toolbar>div:first-child{display:flex;align-items:center}.cad-toolbar .status-dot{background:var(--acid);box-shadow:0 0 0 4px rgba(216,255,53,.16)}
 .viewer-actions{display:flex;gap:4px}.viewer-actions button{background:transparent;border:1px solid var(--line);font-family:var(--mono);font-size:9px;text-transform:uppercase;padding:9px 11px;cursor:pointer}.viewer-actions button:hover,.viewer-actions button.active{background:var(--ink);color:white}
-#cad-viewer{position:relative;overflow:hidden;background:#deddd6;min-height:480px;touch-action:none}
+#cad-viewer{position:relative;overflow:hidden;background:#e1e3e3;min-height:480px;touch-action:none}
 #cad-viewer canvas{display:block;width:100%;height:100%;outline:0}
-.viewer-loading{position:absolute;inset:0;z-index:3;background:#deddd6;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:10px;text-transform:uppercase;transition:opacity .25s}
+.viewer-loading{position:absolute;inset:0;z-index:3;background:#e1e3e3;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:10px;text-transform:uppercase;transition:opacity .25s}
 .viewer-loading.hidden{opacity:0;pointer-events:none}.viewer-loading span{width:9px;height:9px;border:1px solid var(--ink);border-top-color:transparent;border-radius:50%;animation:viewer-spin .7s linear infinite}@keyframes viewer-spin{to{transform:rotate(360deg)}}
 .viewer-hint{position:absolute;bottom:14px;left:18px;margin:0;font-size:8px;color:#555;pointer-events:none}
 .axis-label{position:absolute;font-family:var(--mono);font-size:8px;bottom:19px;right:22px;color:#666;pointer-events:none}.axis-x{color:#c54538;right:52px}.axis-y{color:#478b51;right:37px}.axis-z{color:#3c69a4}

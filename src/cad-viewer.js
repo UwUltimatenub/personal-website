@@ -4,6 +4,7 @@ import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const projects = {
   midkey: {
@@ -37,7 +38,7 @@ export function initCadViewer() {
   dracoLoader.setDecoderPath('/draco/');
   const gltfLoader = new GLTFLoader();
   gltfLoader.setDRACOLoader(dracoLoader);
-  scene.background = new THREE.Color(0xdeddd6);
+  scene.background = new THREE.Color(0xe1e3e3);
   const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 1000);
   camera.position.set(7, 5, 8);
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
@@ -46,6 +47,10 @@ export function initCadViewer() {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   container.prepend(renderer.domElement);
+
+  const environmentGenerator = new THREE.PMREMGenerator(renderer);
+  scene.environment = environmentGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+  environmentGenerator.dispose();
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
@@ -58,7 +63,7 @@ export function initCadViewer() {
   key.position.set(5, 9, 6);
   key.castShadow = true;
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xd8ff35, 1.8);
+  const rim = new THREE.DirectionalLight(0xdcecff, 1.35);
   rim.position.set(-7, 3, -5);
   scene.add(rim);
 
@@ -101,6 +106,13 @@ export function initCadViewer() {
       if (object.isMesh) {
         object.castShadow = !info.file;
         object.receiveShadow = true;
+        const materials = Array.isArray(object.material) ? object.material : [object.material];
+        materials.filter(Boolean).forEach((material) => {
+          if ('roughness' in material) material.roughness = Math.min(material.roughness, 0.26);
+          if ('metalness' in material) material.metalness = Math.max(material.metalness, 0.18);
+          if ('envMapIntensity' in material) material.envMapIntensity = 1.25;
+          material.needsUpdate = true;
+        });
       }
     });
     scene.add(activeModel);
