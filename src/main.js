@@ -1,3 +1,5 @@
+import './styles.css';
+
 const header = document.querySelector('.site-header');
 const menu = document.querySelector('.menu-button');
 
