@@ -24,6 +24,7 @@ Toronto, Ontario · 2021–2025
 Ontario, Canada · September 2025–Present
 
 - Guide annual game analysis, competition strategy, and robot design while mentoring students in SolidWorks and Onshape CAD, with an emphasis on robust, manufacturable subsystems.
+- Serve as lead technical coach for FIRST Robotics Competition teams 9785 and 11270, educating youth in robot design, fabrication, and programming.
 - Supervise safe fabrication using saws, drills, 3D printers, and CNC machines; coordinate robot assembly, wiring, and quality-control checkpoints.
 - Coach students on command-based robot code architecture, sensor integration, computer vision with Limelight or PhotonVision, electrical design, power distribution, and troubleshooting.
 - Manage build-season milestones from prototyping through competition readiness while fostering safety, collaboration, and Gracious Professionalism.
@@ -50,7 +51,18 @@ July 2024–August 2024
 
 ## Skills
 
-- **Programming:** Java, C++, command-based robot programming, autonomous routines
+- **Programming:** Java, JavaScript, Python, C++, HTML, CSS, command-based robot programming, autonomous routines
 - **Design & Manufacturing:** Onshape, SolidWorks, CAD, Design for Manufacturing, tolerance-stack analysis, 3D printing, CNC machining
 - **Robotics:** Sensor integration, computer vision, Limelight, PhotonVision, gyroscopes, encoders, robot electrical systems
 - **Leadership:** Project management, competition strategy, team mentorship, cross-functional coordination
+- **Digital Tools:** WordPress content management, Microsoft Excel, Google Sheets
+
+## Awards & Recognition
+
+- Distinction, Canadian Computing Competition (CCC)
+- Regionalist, SFU Canadian Coding League
+- Bronze Medal, TDSB Technical Skills Competition for Coding
+- FIRST Robotics Competition Rookie All-Star Award
+- Highest Grade in Grade 12 Computer Science
+- Honour Student
+- Waterloo mathematics contest participant
