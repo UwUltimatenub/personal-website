@@ -6,14 +6,24 @@ const menu = document.querySelector('.menu-button');
 
 menu.addEventListener('click', () => {
   const open = header.classList.toggle('open');
+  document.body.classList.toggle('menu-open', open);
   menu.setAttribute('aria-expanded', String(open));
   menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
 });
 
 document.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => {
   header.classList.remove('open');
+  document.body.classList.remove('menu-open');
   menu.setAttribute('aria-expanded', 'false');
 }));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  header.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  menu.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-label', 'Open navigation');
+});
 
 const navigationLinks = [...document.querySelectorAll('nav a')];
 const sectionObserver = new IntersectionObserver((entries) => {
