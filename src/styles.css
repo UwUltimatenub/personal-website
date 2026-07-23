@@ -40,3 +40,35 @@
 .skill-grid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1050px){.skill-grid{grid-template-columns:repeat(2,1fr)}.skill-card:nth-child(2){border-right:0}.skill-card:nth-child(-n+2){border-bottom:1px solid var(--ink)}}
 @media(max-width:800px){.skill-grid{grid-template-columns:1fr}.skill-card{border-right:0;border-bottom:1px solid var(--ink)}}
+
+/* Compact layout, persistent navigation, and availability */
+main section[id]{scroll-margin-top:72px}
+.site-header{position:fixed;height:72px;z-index:30;background:rgba(241,239,232,.91);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.site-header nav a{position:relative;padding:27px 0 24px}
+.site-header nav a:after{content:"";position:absolute;left:0;right:100%;bottom:18px;height:2px;background:var(--ink);transition:right .25s ease}
+.site-header nav a.active:after{right:0}
+.hero{min-height:670px;max-height:820px;padding-top:72px}
+.hero-copy{padding-top:28px;padding-bottom:28px}
+h1{margin-top:25px;margin-bottom:22px}
+.availability{margin-top:28px;max-width:620px;border:1px solid var(--ink);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:14px 16px;background:rgba(255,255,255,.25)}
+.availability>div{display:flex;align-items:center}.availability strong{font-size:14px}.availability>a{font-family:var(--mono);font-size:9px;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.hero-actions{margin-top:28px}
+.about{padding-top:90px;padding-bottom:95px}
+.statement{margin-bottom:42px}
+.experience{padding-top:95px;padding-bottom:95px}
+.section-heading{margin-bottom:60px}
+.role{padding-top:27px;padding-bottom:31px}
+.role div:nth-child(2)>p:last-child{margin-bottom:0}
+.projects{padding-top:95px;padding-bottom:100px}
+.projects-heading{margin-bottom:55px}
+.cad-workspace{min-height:650px}
+.project-option,.upload-model{padding-top:20px;padding-bottom:20px}
+.project-option span{margin-bottom:17px}
+.skills{padding-top:95px;padding-bottom:100px}
+.skills-header{margin-top:42px;margin-bottom:55px}
+.skill-card{min-height:330px;padding:27px}
+.skill-card h3{margin-top:55px}
+.contact{padding-top:85px;padding-bottom:90px}
+.contact h2{margin-top:25px;margin-bottom:42px}
+@media(max-width:800px){.site-header.open nav{top:72px}.hero{padding-top:72px}.hero-copy{padding-top:68px;padding-bottom:60px}.availability{grid-template-columns:1fr auto}.availability>div{grid-column:1/-1}.about,.experience,.skills,.projects{padding-top:72px;padding-bottom:75px}.section-heading,.projects-heading{margin-bottom:48px}.role{padding-top:24px;padding-bottom:27px}.skill-card{min-height:290px}.contact{padding-top:72px;padding-bottom:76px}}
+@media(max-width:500px){.availability{grid-template-columns:1fr;gap:10px}.availability>div{grid-column:auto}.availability>a{justify-self:start}}
