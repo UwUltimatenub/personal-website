@@ -37,8 +37,8 @@ export function initCadViewer() {
   scene.background = new THREE.Color(0xdeddd6);
   const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 1000);
   camera.position.set(7, 5, 8);
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.35));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -64,7 +64,6 @@ export function initCadViewer() {
   scene.add(grid);
 
   let activeModel;
-  let isWireframe = false;
   const defaultMaterial = () => new THREE.MeshStandardMaterial({ color: 0xaeb4b3, metalness: 0.72, roughness: 0.28 });
   const accentMaterial = () => new THREE.MeshStandardMaterial({ color: 0xd8ff35, metalness: 0.15, roughness: 0.42 });
   const darkMaterial = () => new THREE.MeshStandardMaterial({ color: 0x242526, metalness: 0.65, roughness: 0.35 });
@@ -147,6 +146,7 @@ export function initCadViewer() {
     camera.updateProjectionMatrix();
     controls.target.set(0, 0, 0);
     controls.update();
+    renderer.render(scene, camera);
   }
 
   function showModel(model, info) {
@@ -154,13 +154,11 @@ export function initCadViewer() {
     activeModel = model;
     activeModel.traverse((object) => {
       if (object.isMesh) {
-        object.castShadow = true;
+        object.castShadow = !info.file;
         object.receiveShadow = true;
       }
     });
     scene.add(activeModel);
-    isWireframe = false;
-    document.querySelector('#wireframe-toggle').classList.remove('active');
     document.querySelector('#model-title').textContent = info.title;
     document.querySelector('#model-description').textContent = info.description;
     frameModel(activeModel);
@@ -192,14 +190,6 @@ export function initCadViewer() {
     selectProject(button.dataset.model);
   }));
 
-  document.querySelector('#wireframe-toggle').addEventListener('click', (event) => {
-    isWireframe = !isWireframe;
-    event.currentTarget.classList.toggle('active', isWireframe);
-    activeModel?.traverse((object) => {
-      const materials = Array.isArray(object.material) ? object.material : [object.material];
-      materials.filter(Boolean).forEach((material) => { material.wireframe = isWireframe; });
-    });
-  });
   document.querySelector('#reset-view').addEventListener('click', () => activeModel && frameModel(activeModel));
   document.querySelector('#fullscreen-view').addEventListener('click', () => {
     const workspace = document.querySelector('.cad-workspace');
@@ -245,14 +235,14 @@ export function initCadViewer() {
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    renderer.render(scene, camera);
   }
   const resizeObserver = new ResizeObserver(resize);
   resizeObserver.observe(container);
   document.addEventListener('fullscreenchange', resize);
 
   function animate() {
-    controls.update();
-    renderer.render(scene, camera);
+    if (controls.update()) renderer.render(scene, camera);
     requestAnimationFrame(animate);
   }
   selectProject('midkey');
