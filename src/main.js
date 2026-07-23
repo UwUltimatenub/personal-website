@@ -1,4 +1,5 @@
 import './styles.css';
+import { initCadViewer } from './cad-viewer.js';
 
 const header = document.querySelector('.site-header');
 const menu = document.querySelector('.menu-button');
@@ -25,3 +26,4 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 document.querySelector('#year').textContent = new Date().getFullYear();
+initCadViewer();

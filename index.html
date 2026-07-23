@@ -16,7 +16,7 @@
       <a class="brand" href="#top" aria-label="Eric Zeng, home"><span>EZ</span><span class="brand-name">Eric Zeng</span></a>
       <button class="menu-button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
       <nav aria-label="Primary navigation">
-        <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
       </nav>
       <a class="header-contact" href="mailto:ericzeng210@gmail.com">Let's talk <span>↗</span></a>
     </header>
@@ -69,8 +69,39 @@
         </div>
       </section>
 
+      <section class="projects section-shell" id="projects">
+        <div class="projects-heading reveal">
+          <div class="section-label mono"><span>04</span> CAD PROJECTS</div>
+          <div><h2>Inspect the<br /><em>engineering.</em></h2><p>Explore representative project assemblies, or load a CAD export directly into the viewer.</p></div>
+        </div>
+        <div class="cad-workspace reveal">
+          <aside class="project-list" aria-label="CAD projects">
+            <button class="project-option active" data-model="robot"><span class="mono">01 / ROBOTICS</span><strong>Competition Robot</strong><small>Team 9659 · Chassis assembly</small></button>
+            <button class="project-option" data-model="camera"><span class="mono">02 / INTERNSHIP</span><strong>Sensor Mount</strong><small>Cyberworks · Camera bracket</small></button>
+            <button class="project-option" data-model="vision"><span class="mono">03 / CONTROLS</span><strong>Vision System</strong><small>Camera &amp; sensor integration</small></button>
+            <label class="upload-model"><input id="model-upload" type="file" accept=".stl,.obj,.glb,.gltf" /><span>＋ Load your CAD file</span><small>STL, OBJ, GLB or GLTF</small></label>
+          </aside>
+          <div class="viewer-column">
+            <div class="cad-toolbar">
+              <div><span class="status-dot"></span><span id="viewer-status" class="mono">INTERACTIVE CONCEPT MODEL</span></div>
+              <div class="viewer-actions">
+                <button id="wireframe-toggle" type="button">Wireframe</button>
+                <button id="reset-view" type="button">Reset view</button>
+                <button id="fullscreen-view" type="button" aria-label="Open fullscreen">⛶</button>
+              </div>
+            </div>
+            <div id="cad-viewer" aria-label="Interactive 3D CAD model viewer">
+              <div class="viewer-loading"><span></span>Loading model</div>
+              <div class="axis-label axis-x">X</div><div class="axis-label axis-y">Y</div><div class="axis-label axis-z">Z</div>
+              <p class="viewer-hint mono">DRAG TO ROTATE · SCROLL TO ZOOM · RIGHT DRAG TO PAN</p>
+            </div>
+            <div class="cad-caption"><div><span class="mono">CURRENT VIEW</span><h3 id="model-title">Competition Robot</h3></div><p id="model-description">A representative drivetrain and superstructure assembly inspired by my work leading Team 9659 from early prototypes through competition.</p></div>
+          </div>
+        </div>
+      </section>
+
       <section class="skills section-shell" id="skills">
-        <div class="section-label mono reveal"><span>04</span> TOOLKIT</div>
+        <div class="section-label mono reveal"><span>05</span> TOOLKIT</div>
         <div class="skills-header reveal"><h2>Built to make<br />ideas move.</h2><p>A practical toolkit spanning mechanical systems, software, and team leadership.</p></div>
         <div class="skill-grid">
           <article class="skill-card reveal"><span class="mono">A / 01</span><h3>Programming</h3><ul><li>Java</li><li>C++</li><li>Command-based architecture</li><li>Autonomous routines</li></ul></article>
