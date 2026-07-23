@@ -36,17 +36,7 @@
 @media(max-width:900px){.projects{padding-top:90px;padding-bottom:90px}.projects-heading{grid-template-columns:1fr;gap:55px}.cad-workspace{grid-template-columns:1fr;min-height:0}.project-list{border-right:0;border-bottom:1px solid var(--ink);display:grid;grid-template-columns:repeat(3,1fr)}.project-option{border-right:1px solid var(--line);padding:20px 16px}.project-option span{margin-bottom:18px}.project-option small{display:none}.upload-model{grid-column:1/-1;margin:0;border-top:0}.viewer-column{grid-template-rows:auto 480px auto}.cad-caption{grid-template-columns:1fr}}
 @media(max-width:560px){.project-list{grid-template-columns:1fr}.project-option{border-right:0}.cad-toolbar{align-items:flex-start;height:auto;padding:14px;flex-direction:column}.viewer-actions{width:100%}.viewer-actions button{flex:1}.viewer-column{grid-template-rows:auto 400px auto}.cad-caption{padding:20px}}
 
-/* Expanded skills and recognition */
+/* Expanded skills */
 .skill-grid{grid-template-columns:repeat(4,1fr)}
-.awards{padding-top:140px;padding-bottom:150px;background:var(--ink);color:white;display:grid;grid-template-columns:25% 75%}
-.awards .section-label span{border-color:white}
-.awards-heading{display:grid;grid-template-columns:1.6fr 1fr;gap:50px;align-items:end;margin-bottom:75px}
-.awards-heading h2{font-size:clamp(50px,6vw,92px);font-weight:500;margin:0;letter-spacing:-.055em;line-height:.98}
-.awards-heading h2 em{color:var(--acid)}
-.awards-heading p{color:#aaa;font-size:16px;line-height:1.65;max-width:350px}
-.award-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.22)}
-.award{padding:28px 25px 32px 0;border-bottom:1px solid rgba(255,255,255,.22);position:relative}
-.award:nth-child(odd){border-right:1px solid rgba(255,255,255,.22)}.award:nth-child(even){padding-left:25px}
-.award>span{color:var(--acid);font-size:9px}.award h3{font-size:23px;letter-spacing:-.03em;margin:25px 0 7px}.award p{color:#999;font-size:12px;margin:0}
 @media(max-width:1050px){.skill-grid{grid-template-columns:repeat(2,1fr)}.skill-card:nth-child(2){border-right:0}.skill-card:nth-child(-n+2){border-bottom:1px solid var(--ink)}}
-@media(max-width:800px){.skill-grid{grid-template-columns:1fr}.skill-card{border-right:0;border-bottom:1px solid var(--ink)}.awards{padding-top:90px;padding-bottom:90px;grid-template-columns:1fr;gap:55px}.awards-heading{grid-template-columns:1fr}.award-list{grid-template-columns:1fr}.award:nth-child(odd){border-right:0}.award:nth-child(even){padding-left:0}}
+@media(max-width:800px){.skill-grid{grid-template-columns:1fr}.skill-card{border-right:0;border-bottom:1px solid var(--ink)}}
