@@ -3,3 +3,6 @@ dist/
 .vite/
 *.local
 .DS_Store
+
+# Keep the original large CAD export locally; the optimized copy is deployed.
+/public/models/Midkey.glb

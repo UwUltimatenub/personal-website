@@ -3,8 +3,14 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const projects = {
+  midkey: {
+    title: 'Midkey',
+    description: 'An interactive view of the Midkey CAD assembly. Rotate, zoom, pan, or enable wireframe mode to inspect the model.',
+    file: '/models/midkey-web.glb',
+  },
   robot: {
     title: 'Competition Robot',
     description: 'A representative drivetrain and superstructure assembly inspired by my work leading Team 9659 from early prototypes through competition.',
@@ -24,6 +30,10 @@ export function initCadViewer() {
   if (!container) return;
 
   const scene = new THREE.Scene();
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath('/draco/');
+  const gltfLoader = new GLTFLoader();
+  gltfLoader.setDRACOLoader(dracoLoader);
   scene.background = new THREE.Color(0xdeddd6);
   const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 1000);
   camera.position.set(7, 5, 8);
@@ -157,10 +167,22 @@ export function initCadViewer() {
     document.querySelector('.viewer-loading').classList.add('hidden');
   }
 
-  function selectProject(keyName) {
+  async function selectProject(keyName) {
     document.querySelector('.viewer-loading').classList.remove('hidden');
     const factories = { robot: robotAssembly, camera: cameraMount, vision: visionAssembly };
-    requestAnimationFrame(() => showModel(factories[keyName](), projects[keyName]));
+    try {
+      if (projects[keyName].file) {
+        document.querySelector('#viewer-status').textContent = 'LOADING CAD ASSEMBLY';
+        const result = await gltfLoader.loadAsync(projects[keyName].file);
+        showModel(result.scene, projects[keyName]);
+      } else {
+        requestAnimationFrame(() => showModel(factories[keyName](), projects[keyName]));
+      }
+    } catch (error) {
+      document.querySelector('.viewer-loading').classList.add('hidden');
+      document.querySelector('#viewer-status').textContent = 'COULD NOT LOAD MODEL';
+      console.error(error);
+    }
   }
 
   document.querySelectorAll('.project-option').forEach((button) => button.addEventListener('click', () => {
@@ -202,7 +224,7 @@ export function initCadViewer() {
         model.traverse((object) => { if (object.isMesh) object.material = defaultMaterial(); });
       } else if (extension === 'glb' || extension === 'gltf') {
         const data = extension === 'glb' ? await file.arrayBuffer() : await file.text();
-        const result = await new Promise((resolve, reject) => new GLTFLoader().parse(data, '', resolve, reject));
+        const result = await new Promise((resolve, reject) => gltfLoader.parse(data, '', resolve, reject));
         model = result.scene;
       } else throw new Error('Unsupported file format');
       document.querySelectorAll('.project-option').forEach((item) => item.classList.remove('active'));
@@ -233,7 +255,7 @@ export function initCadViewer() {
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
   }
-  selectProject('robot');
+  selectProject('midkey');
   resize();
   animate();
 }
