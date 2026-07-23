@@ -38,12 +38,14 @@ export function initCadViewer() {
   dracoLoader.setDecoderPath('/draco/');
   const gltfLoader = new GLTFLoader();
   gltfLoader.setDRACOLoader(dracoLoader);
-  scene.background = new THREE.Color(0xe1e3e3);
+  scene.background = new THREE.Color(0x252a2e);
   const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 1000);
   camera.position.set(7, 5, 8);
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(1);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.88;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   container.prepend(renderer.domElement);
@@ -58,16 +60,16 @@ export function initCadViewer() {
   controls.minDistance = 2;
   controls.maxDistance = 35;
 
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x484842, 2.3));
-  const key = new THREE.DirectionalLight(0xffffff, 3.2);
+  scene.add(new THREE.HemisphereLight(0xdfe8ed, 0x15181b, 0.85));
+  const key = new THREE.DirectionalLight(0xfff8ee, 2.1);
   key.position.set(5, 9, 6);
   key.castShadow = true;
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xdcecff, 1.35);
+  const rim = new THREE.DirectionalLight(0xbddcff, 0.75);
   rim.position.set(-7, 3, -5);
   scene.add(rim);
 
-  const grid = new THREE.GridHelper(30, 30, 0x999990, 0xc7c6bf);
+  const grid = new THREE.GridHelper(30, 30, 0x69747a, 0x353c40);
   grid.position.y = -1.55;
   scene.add(grid);
 
@@ -110,7 +112,7 @@ export function initCadViewer() {
         materials.filter(Boolean).forEach((material) => {
           if ('roughness' in material) material.roughness = Math.min(material.roughness, 0.26);
           if ('metalness' in material) material.metalness = Math.max(material.metalness, 0.18);
-          if ('envMapIntensity' in material) material.envMapIntensity = 1.25;
+          if ('envMapIntensity' in material) material.envMapIntensity = 0.9;
           material.needsUpdate = true;
         });
       }
