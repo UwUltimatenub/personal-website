@@ -199,7 +199,7 @@ export function initCadViewer() {
     if (controls.update()) renderer.render(scene, camera);
     requestAnimationFrame(animate);
   }
-  selectProject('midkey');
+  selectProject('lickitung');
   resize();
   animate();
 }
