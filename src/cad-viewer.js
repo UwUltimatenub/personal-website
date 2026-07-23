@@ -8,20 +8,23 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 const projects = {
   midkey: {
     title: 'Midkey',
-    description: 'An interactive view of the Midkey CAD assembly. Rotate, zoom, pan, or enable wireframe mode to inspect the model.',
+    description: 'An interactive view of the Midkey CAD assembly. Rotate, zoom, and pan to inspect the model.',
     file: '/models/midkey-web.glb',
   },
-  robot: {
-    title: 'Competition Robot',
-    description: 'A representative drivetrain and superstructure assembly inspired by my work leading Team 9659 from early prototypes through competition.',
+  furlin: {
+    title: 'Furlin',
+    description: 'An interactive view of the Furlin CAD assembly. Rotate, zoom, and pan to inspect the model.',
+    file: '/models/furlin-web.glb',
   },
-  camera: {
-    title: 'Sensor Mount',
-    description: 'A compact, adjustable camera and sensor bracket representative of my CAD work for an autonomous airport wheelchair at Cyberworks Robotics.',
+  lickitung: {
+    title: 'Lickitung',
+    description: 'An interactive view of the Lickitung CAD assembly. Rotate, zoom, and pan to inspect the model.',
+    file: '/models/lickitung-web.glb',
   },
-  vision: {
-    title: 'Vision System',
-    description: 'A representative vision stack showing the relationship between camera, sensor enclosure, and adjustable mounting hardware.',
+  toyota: {
+    title: 'Toyota',
+    description: 'An interactive view of the Toyota CAD assembly. Rotate, zoom, and pan to inspect the model.',
+    file: '/models/toyota-web.glb',
   },
 };
 
@@ -65,64 +68,6 @@ export function initCadViewer() {
 
   let activeModel;
   const defaultMaterial = () => new THREE.MeshStandardMaterial({ color: 0xaeb4b3, metalness: 0.72, roughness: 0.28 });
-  const accentMaterial = () => new THREE.MeshStandardMaterial({ color: 0xd8ff35, metalness: 0.15, roughness: 0.42 });
-  const darkMaterial = () => new THREE.MeshStandardMaterial({ color: 0x242526, metalness: 0.65, roughness: 0.35 });
-
-  function mesh(geometry, material, position, rotation = [0, 0, 0]) {
-    const item = new THREE.Mesh(geometry, material);
-    item.position.set(...position);
-    item.rotation.set(...rotation);
-    item.castShadow = true;
-    item.receiveShadow = true;
-    return item;
-  }
-
-  function robotAssembly() {
-    const group = new THREE.Group();
-    const metal = defaultMaterial();
-    const dark = darkMaterial();
-    const accent = accentMaterial();
-    group.add(mesh(new THREE.BoxGeometry(4.8, .25, 3.5), metal, [0, -.55, 0]));
-    [[-2.05, -1.8], [2.05, -1.8], [-2.05, 1.8], [2.05, 1.8]].forEach(([x, z]) => {
-      group.add(mesh(new THREE.CylinderGeometry(.54, .54, .42, 24), dark, [x, -.68, z], [0, 0, Math.PI / 2]));
-      group.add(mesh(new THREE.CylinderGeometry(.22, .22, .5, 18), accent, [x, -.68, z], [0, 0, Math.PI / 2]));
-    });
-    [-1.65, 1.65].forEach((x) => group.add(mesh(new THREE.BoxGeometry(.18, 3.4, .18), metal, [x, .95, .65])));
-    group.add(mesh(new THREE.BoxGeometry(3.6, .22, .8), metal, [0, 2.5, .65]));
-    group.add(mesh(new THREE.BoxGeometry(2.25, .18, 1.05), accent, [0, 1.15, -.55], [-.25, 0, 0]));
-    group.add(mesh(new THREE.CylinderGeometry(.38, .38, 2.6, 24), dark, [0, 1.2, .75], [0, 0, Math.PI / 2]));
-    group.add(mesh(new THREE.BoxGeometry(.8, .45, .65), dark, [0, 2.55, .6]));
-    return group;
-  }
-
-  function cameraMount() {
-    const group = new THREE.Group();
-    const metal = defaultMaterial();
-    const dark = darkMaterial();
-    const accent = accentMaterial();
-    group.add(mesh(new THREE.BoxGeometry(4.6, .28, 3.2), metal, [0, -1.1, 0]));
-    group.add(mesh(new THREE.BoxGeometry(.3, 3.4, 2.5), metal, [-1.8, .45, 0]));
-    group.add(mesh(new THREE.BoxGeometry(2.4, 1.65, 1.9), dark, [.25, .65, 0]));
-    group.add(mesh(new THREE.CylinderGeometry(.58, .58, .5, 32), accent, [1.68, .75, 0], [0, 0, Math.PI / 2]));
-    group.add(mesh(new THREE.CylinderGeometry(.26, .26, .58, 32), dark, [1.82, .75, 0], [0, 0, Math.PI / 2]));
-    [[-1.8, -1.15], [1.8, -1.15]].forEach(([x, y]) => group.add(mesh(new THREE.CylinderGeometry(.12, .12, .36, 18), dark, [x, y, 1.05])));
-    return group;
-  }
-
-  function visionAssembly() {
-    const group = new THREE.Group();
-    const metal = defaultMaterial();
-    const dark = darkMaterial();
-    const accent = accentMaterial();
-    group.add(mesh(new THREE.CylinderGeometry(2.5, 2.8, .35, 8), metal, [0, -1.15, 0]));
-    group.add(mesh(new THREE.CylinderGeometry(.35, .5, 2.7, 20), metal, [0, .15, 0]));
-    group.add(mesh(new THREE.BoxGeometry(3.3, .25, .5), metal, [0, 1.5, 0], [0, 0, -.15]));
-    group.add(mesh(new THREE.BoxGeometry(1.6, 1.05, 1.15), dark, [1.15, 1.33, 0]));
-    group.add(mesh(new THREE.CylinderGeometry(.35, .35, .35, 24), accent, [2.05, 1.33, 0], [0, 0, Math.PI / 2]));
-    [-1.25, 0, 1.25].forEach((x, index) => group.add(mesh(new THREE.BoxGeometry(.65, .48, .8), index === 1 ? accent : dark, [x, -.72, 1.35])));
-    return group;
-  }
-
   function disposeModel() {
     if (!activeModel) return;
     scene.remove(activeModel);
@@ -167,15 +112,10 @@ export function initCadViewer() {
 
   async function selectProject(keyName) {
     document.querySelector('.viewer-loading').classList.remove('hidden');
-    const factories = { robot: robotAssembly, camera: cameraMount, vision: visionAssembly };
     try {
-      if (projects[keyName].file) {
-        document.querySelector('#viewer-status').textContent = 'LOADING CAD ASSEMBLY';
-        const result = await gltfLoader.loadAsync(projects[keyName].file);
-        showModel(result.scene, projects[keyName]);
-      } else {
-        requestAnimationFrame(() => showModel(factories[keyName](), projects[keyName]));
-      }
+      document.querySelector('#viewer-status').textContent = 'LOADING CAD ASSEMBLY';
+      const result = await gltfLoader.loadAsync(projects[keyName].file);
+      showModel(result.scene, projects[keyName]);
     } catch (error) {
       document.querySelector('.viewer-loading').classList.add('hidden');
       document.querySelector('#viewer-status').textContent = 'COULD NOT LOAD MODEL';

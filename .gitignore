@@ -6,3 +6,6 @@ dist/
 
 # Keep the original large CAD export locally; the optimized copy is deployed.
 /public/models/Midkey.glb
+/public/models/Furlin.glb
+/public/models/Lickitung.glb
+/public/models/Toyota.glb
