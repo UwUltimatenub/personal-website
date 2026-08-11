@@ -4,9 +4,9 @@
   --surface: #fff;
   --muted: #696965;
   --line: #d8d6cf;
-  --blue: #1769aa;
-  --blue-dark: #0d4f83;
-  --blue-soft: #e8f1f8;
+  --blue: #315fca;
+  --blue-dark: #22479e;
+  --blue-soft: #e9eefc;
   --mono: "DM Mono", monospace;
   --sans: "Manrope", sans-serif;
   color-scheme: light;
@@ -18,9 +18,9 @@
   --surface: #192127;
   --muted: #a4adb3;
   --line: #344049;
-  --blue: #69b8f3;
-  --blue-dark: #8bc9f6;
-  --blue-soft: #18354a;
+  --blue: #82aaff;
+  --blue-dark: #a9c2ff;
+  --blue-soft: #24345c;
   color-scheme: dark;
 }
 
