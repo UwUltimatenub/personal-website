@@ -4,8 +4,10 @@ dist/
 *.local
 .DS_Store
 
-# Keep the original large CAD export locally; the optimized copy is deployed.
-/public/models/Midkey.glb
-/public/models/Furlin.glb
-/public/models/Lickitung.glb
-/public/models/Toyota.glb
+# Keep original large CAD exports locally; only optimized copies are deployed.
+/models-source/
+
+# Local source media; optimized derivatives are committed from public/media.
+/Furlin/
+/Lickitung/
+/Midkey/
