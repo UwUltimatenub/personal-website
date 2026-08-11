@@ -20,6 +20,17 @@
     <meta name="twitter:image" content="https://ericzeng.ca/media/social/eric-zeng-robotics.webp" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>Eric Zeng — Robotics & Engineering</title>
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        } catch {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -34,6 +45,7 @@
         <a href="#experience">experience</a>
         <a href="#projects">projects</a>
         <a href="#contact">contact</a>
+        <button id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch color theme"><span aria-hidden="true">◐</span></button>
       </nav>
     </header>
 

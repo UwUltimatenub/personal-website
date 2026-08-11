@@ -2,6 +2,33 @@ import './styles.css';
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+const themeToggle = document.querySelector('#theme-toggle');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const dark = theme === 'dark';
+  themeToggle.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} mode`);
+  themeToggle.title = `Switch to ${dark ? 'light' : 'dark'} mode`;
+  themeColor.content = dark ? '#11171c' : '#f7f6f2';
+}
+
+applyTheme(document.documentElement.dataset.theme || (systemTheme.matches ? 'dark' : 'light'));
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  applyTheme(nextTheme);
+  try { localStorage.setItem('theme', nextTheme); } catch {}
+});
+
+systemTheme.addEventListener('change', (event) => {
+  try {
+    if (localStorage.getItem('theme')) return;
+  } catch {}
+  applyTheme(event.matches ? 'dark' : 'light');
+});
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const videos = document.querySelectorAll('.lazy-video');
 
