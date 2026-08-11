@@ -146,7 +146,7 @@ export function initCadViewer() {
 
   document.querySelector('#reset-view').addEventListener('click', () => activeModel && frameModel(activeModel));
   document.querySelector('#fullscreen-view').addEventListener('click', () => {
-    const workspace = document.querySelector('.cad-workspace');
+    const workspace = document.querySelector('.viewer-wrap');
     if (document.fullscreenElement) document.exitFullscreen();
     else workspace.requestFullscreen?.();
   });
